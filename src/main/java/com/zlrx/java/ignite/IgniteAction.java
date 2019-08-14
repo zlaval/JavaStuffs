@@ -54,7 +54,6 @@ public class IgniteAction {
                     " id LONG PRIMARY KEY, name VARCHAR, isEmployed tinyint(1)) " +
                     " WITH \"template=replicated\""
             );
-
             PreparedStatement sql = conn.prepareStatement(
                     "INSERT INTO Employee (id, name, isEmployed) VALUES (?, ?, ?)");
 
@@ -62,16 +61,11 @@ public class IgniteAction {
             sql.setString(2, "Bela");
             sql.setBoolean(3, true);
             sql.executeUpdate();
-
             sql.setLong(1, 2);
             sql.setString(2, "sanyesz");
             sql.setBoolean(3, false);
             sql.executeUpdate();
-            System.out.println("Inserted");
-
-            Thread.sleep(40000);
-
-        } catch (InterruptedException | ClassNotFoundException | SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } finally {
             try {
